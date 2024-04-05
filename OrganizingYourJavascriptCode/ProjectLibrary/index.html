@@ -5,14 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Library</title>
     <link rel="stylesheet" href="style.css">
-    <script src="code.js"></script>
+    <script src="code.js" defer></script>
 </head>
 <body>
     <h1>Project Library</h1>
     <button>Add a Book</button>
     <dialog>
-        <button>Close</button>
-        <p>Hellooooo!!!!!!!!!!</p>
+        <form action="">
+            <div>
+            <label for="book-name">Name:</label>
+            <input type="text" id="book-name">
+        </div>
+        <div>
+            <label for="author">Author:</label>
+            <input type="text" id="author">
+        </div>
+        <div>
+            <label for="year">Year:</label>
+            <input type="text" id="year">
+        </div>    
+        <div>
+            <label for="" id="">Have you read it?</label>
+            <input type="checkbox">
+        </div>
+            <button type="submit">Submit</button>
+            <button>Cancel</button>
+        </form>
     </dialog>
 </body>
 </html>
