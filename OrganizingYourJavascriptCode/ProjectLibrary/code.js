@@ -2,6 +2,11 @@ const myLibrary = [];
 const dialog = document.querySelector('dialog');
 const showButton = document.querySelector('button');
 const closeButton = document.querySelector('dialog button');
+const container = document.querySelector('.container');
+
+// document.addEventListener('DOMContentLoaded', ()=> {
+// })
+
 
 showButton.addEventListener('click',() =>{
     dialog.showModal();
@@ -28,7 +33,15 @@ function addBookToLibrary(library) {
 
 function showLibrary(library) {
     for (let book of library) {
+        const div = document.createElement('div')
+        
+        let text = book.title + " " + book.author + ' ' + book.pages;
+        div.textContent = text;
+        container.appendChild(div);
+        
+
         console.log(book);
+
     }
 }
 
