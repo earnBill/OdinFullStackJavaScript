@@ -3,9 +3,10 @@ const dialog = document.querySelector('dialog');
 const showButton = document.querySelector('button');
 const closeButton = document.querySelector('dialog button');
 const container = document.querySelector('.container');
-
-// document.addEventListener('DOMContentLoaded', ()=> {
-// })
+const submit = document.querySelector('.submit');
+const dialogTitle = document.querySelector('#book-title');
+const dialogAuthor = document.querySelector('#author');
+const dialogPages = document.querySelector('#pages')
 
 
 showButton.addEventListener('click',() =>{
@@ -16,6 +17,15 @@ closeButton.addEventListener('click',() => {
     dialog.close();
 })
 
+submit.addEventListener('click',(event)=> {
+    
+    console.log('submit');
+    console.log(dialogTitle.value);
+    let book = new Book(dialogTitle.value, dialogAuthor.value, dialogPages.value, true );
+    myLibrary.push(book);
+    createBook(myLibrary[myLibrary.length-1]);
+    event.preventDefault();
+})
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -23,7 +33,7 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
     this.info = function() {
-        return `The ${this.title} by ${this.author}, ${this.pages} pages, ${(this.pa0ges === true)?"I haave read it!!":"not read it!!"}`
+        return `The ${this.title} by ${this.author}, ${this.pages} pages, ${(this.pages === true)?"I haave read it!!":"not read it!!"}`
     }
 }
 
