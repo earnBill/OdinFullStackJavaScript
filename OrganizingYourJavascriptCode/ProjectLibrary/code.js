@@ -42,6 +42,8 @@ function createBook(bookName) {
     const title = document.createElement('div');
     const author = document.createElement('div');
     const year = document.createElement('div');
+    const button = document.createElement('button');
+    const readButton = document.createElement('button');
 
     card.classList.add('card');
     container.appendChild(card);
@@ -54,7 +56,58 @@ function createBook(bookName) {
 
     card.appendChild(year).classList.add('year');
     year.textContent = bookName.pages;
+
+    card.appendChild(button).classList.add('removeButton');
+    button.textContent = 'Remove';
+
+    card.appendChild(readButton).classList.add('readButton');
+    readButtonText();
+    
+    function readButtonText() {
+        if (bookName.read === true) {
+            readButton.textContent = 'Read';
+            readButton.style.backgroundColor = 'green';
+        }
+        else {
+            readButton.textContent = 'Not read';
+            readButton.style.backgroundColor = 'red';
+        }
+    }
+
+
+    const removeButtons = document.querySelectorAll('.removeButton');
+
+    removeButtons.forEach((button) => {
+        button.addEventListener('click', ()=> {
+            button.parentNode.remove();
+        })
+    })
+
+    let readButtons = document.querySelectorAll('.readButton');
+
+    readButtons.forEach((button)=> { 
+        button.addEventListener('click',()=> {
+            console.log('click')
+            if (button.textContent == 'Read') {
+                bookName.read = false;
+                console.log('red');
+                // button.textContent = 'Not read';
+                // button.style.backgroundColor = 'red';
+            }
+            else {
+                console.log('green');
+                bookName.read = true;
+                // button.textContent = 'Read';
+                // button.style.backgroundColor = 'green';
+            }
+        readButtonText();
+            
+            
+        })
+    })
 }
+
+
 
 function addBookToLibrary(library) {
     
