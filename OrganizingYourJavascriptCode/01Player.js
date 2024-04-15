@@ -18,5 +18,6 @@ player2.sayname();
 player1.sayHello();
 player2.sayHello();
 
-console.log(Object.getPrototypeOf(player1) === Player.prototype);
-
+console.log(Object.getPrototypeOf(player1));
+console.log(Object.getPrototypeOf(Player.prototype) === Object.prototype);
+console.log(player1.valueOf());
