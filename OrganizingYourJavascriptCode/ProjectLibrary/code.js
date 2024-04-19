@@ -37,7 +37,7 @@ function Book(title, author, pages, read) {
     }
 }
 
-function createBook(bookName) {
+function createBook(bookName, library) {
     const card = document.createElement('div');
     const title = document.createElement('div');
     const author = document.createElement('div');
@@ -59,6 +59,7 @@ function createBook(bookName) {
 
     card.appendChild(removeButton).classList.add('removeButton');
     removeButton.textContent = 'Remove';
+    removeButton.dataset.index = bookName.title;
 
     card.appendChild(readButton).classList.add('readButton');
     readButtonText();
@@ -76,12 +77,15 @@ function createBook(bookName) {
 
 
     removeButton.addEventListener('click', ()=> {
-            removeButton.parentNode.remove();
+        removeButton.parentNode.remove();
+        let index = myLibrary.findIndex((element) => element === removeButton.dataset.index);
+        myLibrary.splice(index, 1);
     })
-s
+
 
     readButton.addEventListener('click',()=> {
         console.log('click')
+        const card = document.querySelector('.card');
         if (readButton.textContent === 'Read') {
             console.log('red');
             readButton.textContent = 'Not read';
@@ -103,7 +107,7 @@ function addBookToLibrary(library) {
 
 function showLibrary(library) {
     for (let book of library) {      
-        createBook(book);
+        createBook(book, library);
         console.log(book);
 
     }
