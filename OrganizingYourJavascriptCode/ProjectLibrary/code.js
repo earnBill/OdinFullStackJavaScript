@@ -87,11 +87,13 @@ function createBook(bookName, library) {
         console.log('click')
         const card = document.querySelector('.card');
         if (readButton.textContent === 'Read') {
+            bookName.read = false;
             console.log('red');
             readButton.textContent = 'Not read';
             readButton.style.backgroundColor = 'red';
         }
         else {
+            bookName.read = true;
             console.log('green');
             readButton.textContent = 'Read';
             readButton.style.backgroundColor = 'green';
