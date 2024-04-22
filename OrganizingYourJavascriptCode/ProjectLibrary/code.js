@@ -6,10 +6,16 @@ const container = document.querySelector('.container');
 const submit = document.querySelector('.submit');
 const dialogTitle = document.querySelector('#book-title');
 const dialogAuthor = document.querySelector('#author');
-const dialogPages = document.querySelector('#pages')
+const dialogPages = document.querySelector('#pages');
+const checkBox = document.querySelector('#check');
 
 
 showButton.addEventListener('click',() =>{
+    dialogTitle.value = "";
+    dialogAuthor.value = "";
+    dialogPages.value = "";
+    checkBox.checked = false;
+    
     dialog.showModal();
 })
 
@@ -18,13 +24,15 @@ closeButton.addEventListener('click',() => {
 })
 
 submit.addEventListener('click',(event)=> {
-    
+    event.preventDefault();
     console.log('submit');
+    console.log(checkBox.checked);
+    
     console.log(dialogTitle.value);
-    let book = new Book(dialogTitle.value, dialogAuthor.value, dialogPages.value, true );
+    let book = new Book(dialogTitle.value, dialogAuthor.value, dialogPages.value, checkBox.checked );
     myLibrary.push(book);
     createBook(myLibrary[myLibrary.length-1]);
-    event.preventDefault();
+    
 })
 
 function Book(title, author, pages, read) {
